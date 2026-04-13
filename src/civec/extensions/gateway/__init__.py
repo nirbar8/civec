@@ -1,0 +1,2 @@
+"""Optional gateway extension namespace."""
+
