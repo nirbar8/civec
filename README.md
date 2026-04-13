@@ -27,7 +27,10 @@ uv run pyright
 - `QueryVectorProvider`: converts text, image, or custom query payloads into query vectors.
 - `ShardRouter`: maps records and queries to storage shards by namespace.
 - `GenericQueryService`: searches LanceDB-like shards and returns JSON-safe result rows.
-- `attach_cosine_similarity`: exact reranking helper for retriever flows.
+- `civec.extensions.reranking`: exact reranking helpers for retriever flows.
+- `civec.extensions.detection_queues`: generic top-K review queue scoring and rule helpers.
+- `civec.extensions.gateway`: generic namespace routing and message mutation service.
+- `civec.clients`: typed HTTP client helpers for service adapters.
 - `IngestionEngine`: transforms, partitions, batches, and writes records through injected app adapters.
 - `rules`: reusable field access, condition models, and route evaluation used by gateways and review queues.
 
@@ -70,7 +73,7 @@ Provide a partitioner and writer for your app. The library handles transformatio
 
 ```python
 from civec.query import GenericQueryService, QueryColumnConfig
-from civec.query.rerank import attach_cosine_similarity
+from civec.extensions.reranking import attach_cosine_similarity
 
 service = GenericQueryService(
     db_conn,
@@ -92,8 +95,9 @@ The `civec.rules` package evaluates generic JSON documents using typed field def
 
 ## Dependency Extras
 
+- `clients`: HTTP client helper dependencies.
 - `lancedb`: LanceDB and PyArrow helpers.
-- `query`: NumPy/Pandas query and reranking helpers.
+- `query`: NumPy/Pandas query helpers.
 - `rabbitmq`: RabbitMQ transport adapter dependencies.
 - `fastapi`: FastAPI adapter dependencies.
 - `tenants-sql`: SQL tenant/shard registry dependencies.

@@ -9,6 +9,9 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+clients = [
+  "httpx",
+]
 lancedb = [
   "lancedb",
   "pyarrow",
