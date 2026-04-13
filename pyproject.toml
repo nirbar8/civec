@@ -58,3 +58,15 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/civec"]
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+  ".gitignore",
+]
+include = [
+  "README.md",
+  "pyproject.toml",
+  "pyrightconfig.json",
+  "src/civec",
+  "tests",
+]
